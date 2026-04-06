@@ -1025,7 +1025,7 @@
     <div class="container">
         <header>
             <div class="logo">MX<span>GENIUS</span></div>
-            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: March 22, 2026 · 2:33 PM EST</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: April 5, 2026 · 8:38 PM EST</div>
             <div class="header-right">
                 <div class="countdown-container">
                     <div class="countdown-label">Launch Countdown</div>
@@ -1061,8 +1061,8 @@
         <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <i class="fas fa-check-circle" style="color: var(--accent-green); font-size: 1.25rem;"></i>
             <div>
-                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 2 Report Ready</div>
-                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 2 report is available for review in the Weekly Reports section below.</div>
+                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 3 Report Ready</div>
+                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 3 report is available for review in the Weekly Reports section below.</div>
             </div>
         </div>
 
@@ -1132,7 +1132,6 @@
                                 <a class="week-status report-ready" onclick="viewReport(2)" title="View Week 2 Report">
                                     <i class="fas fa-file-alt"></i> Report Ready
                                 </a>
-                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
@@ -1150,12 +1149,15 @@
                             <div class="timeline-header">
                                 <span class="timeline-week">Week 3</span>
                                 <span class="timeline-dates">Mar 30 - Apr 5, 2026</span>
-                                <span class="week-status pending">Pending</span>
+                                <a class="week-status report-ready" onclick="viewReport(3)" title="View Week 3 Report">
+                                    <i class="fas fa-file-alt"></i> Report Ready
+                                </a>
+                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
                                     <span class="timeline-label">Summary:</span>
-                                    <span class="timeline-text">[Weekly summary will appear here]</span>
+                                    <span class="timeline-text">AI Troubleshooting Engine & Voice Interface complete</span>
                                 </div>
                             </div>
                         </div>
@@ -1700,6 +1702,8 @@
                     {
                         id: 6,
                         title: "Aircraft Manual Library",
+                        titleBadge: "IN PROGRESS",
+                        titleBadgeColor: "amber",
                         description: "Build system for uploading, organizing, and searching aircraft manuals.",
                         subtasks: [
                             "Create upload interface",
@@ -1730,7 +1734,7 @@
                             "Create RAG system",
                             "Build prompt templates"
                         ],
-                        completed: false,
+                        completed: true,
                         feedback: []
                     }
                 ]
@@ -1748,7 +1752,7 @@
                             "Create voice command parser",
                             "Build audio processing pipeline"
                         ],
-                        completed: false,
+                        completed: true,
                         feedback: []
                     },
                     {

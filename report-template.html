@@ -818,8 +818,13 @@
             }
 
             const dates = getWeekDates(weekNum);
-            let md = '';
+            const paddedWeek = String(weekNum).padStart(2, '0');
 
+            // Collect media blobs (images/videos embedded as data URIs) to save as files
+            const media = [];
+            let imageCounter = 0;
+
+            let md = '';
             md += `# Weekly Progress Report — Week ${weekNum}\n`;
             md += `**Date Range:** ${dates.start} — ${dates.end}\n`;
             md += `**Project:** Advanced AOG · Hermetic Labs\n\n`;
@@ -846,7 +851,18 @@
                     const caption = section.querySelector('.image-caption');
                     if (img && img.src && !img.src.endsWith('#')) {
                         const cap = caption ? caption.value.trim() : '';
-                        md += `![${cap || 'Image'}](${img.src})\n`;
+                        // If data URI, extract to a file for Electron saves
+                        if (img.src.startsWith('data:')) {
+                            imageCounter++;
+                            const mimeMatch = img.src.match(/^data:(image\/\w+);base64,/);
+                            const ext = mimeMatch ? mimeMatch[1].split('/')[1].replace('jpeg', 'jpg') : 'png';
+                            const filename = `image-${imageCounter}.${ext}`;
+                            const b64 = img.src.replace(/^data:image\/\w+;base64,/, '');
+                            media.push({ filename, data: b64 });
+                            md += `![${cap || 'Image'}](${filename})\n`;
+                        } else {
+                            md += `![${cap || 'Image'}](${img.src})\n`;
+                        }
                         if (cap) md += `*${cap}*\n`;
                         md += `\n`;
                     }
@@ -865,14 +881,32 @@
             md += `---\n\n`;
             md += `*Prepared by Hermetic Labs for Advanced AOG*\n`;
 
-            const paddedWeek = String(weekNum).padStart(2, '0');
-
             // Build the companion .js file for the display template
             const jsContent = `reportLoaded(${JSON.stringify(md)});\n`;
 
+            // ── Electron/Puter path: auto-save to Generated Reports/week-XX/ ──
+            if (window.electronAPI && window.electronAPI.saveReport) {
+                try {
+                    const result = await window.electronAPI.saveReport({
+                        weekNum,
+                        mdContent: md,
+                        jsContent,
+                        media
+                    });
+                    if (result.ok) {
+                        showToast(`✓ Week ${weekNum} saved → Generated Reports/week-${paddedWeek}/`, 'var(--accent-green)');
+                    } else {
+                        showToast('⚠ Save failed', 'var(--accent-red)');
+                    }
+                    return;
+                } catch (err) {
+                    console.error('Electron save failed, falling back:', err);
+                }
+            }
+
+            // ── Browser fallback: File System Access API ──
             if (window.showSaveFilePicker) {
                 try {
-                    // Save the .md file
                     const mdHandle = await window.showSaveFilePicker({
                         suggestedName: `week-${paddedWeek}-report.md`,
                         types: [{ description: 'Markdown', accept: { 'text/markdown': ['.md'] } }]
@@ -881,7 +915,6 @@
                     await mdWritable.write(new Blob([md], { type: 'text/markdown' }));
                     await mdWritable.close();
 
-                    // Save the .js companion to the same directory
                     const jsHandle = await window.showSaveFilePicker({
                         suggestedName: `week-${paddedWeek}-report.js`,
                         types: [{ description: 'JavaScript', accept: { 'text/javascript': ['.js'] } }]
@@ -900,7 +933,7 @@
                 }
             }
 
-            // Fallback: download both files
+            // ── Last resort: blob download ──
             function downloadBlob(blob, name) {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
