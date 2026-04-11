@@ -1025,7 +1025,7 @@
     <div class="container">
         <header>
             <div class="logo">MX<span>GENIUS</span></div>
-            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: April 5, 2026 · 8:38 PM EST</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: April 11, 2026 · 2:23 PM EST</div>
             <div class="header-right">
                 <div class="countdown-container">
                     <div class="countdown-label">Launch Countdown</div>
@@ -1061,8 +1061,8 @@
         <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <i class="fas fa-check-circle" style="color: var(--accent-green); font-size: 1.25rem;"></i>
             <div>
-                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 3 Report Ready</div>
-                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 3 report is available for review in the Weekly Reports section below.</div>
+                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 4 Report Ready</div>
+                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 4 report is available for review in the Weekly Reports section below.</div>
             </div>
         </div>
 
@@ -1095,7 +1095,7 @@
         <div class="weekly-report-section" id="weeklyReport">
             <div class="weekly-report-header" onclick="toggleWeeklyReport()">
                 <div class="weekly-report-title">
-                <i class="fas fa-calendar-alt"></i> Weekly Reports <span class="phase-update-dot" title="New updates"></span>
+                <i class="fas fa-calendar-alt"></i> Weekly Reports <span class="phase-update-dot amber" title="New updates"></span>
                 <i class="fas fa-chevron-down weekly-report-toggle"></i>
                 </div>
                 <div class="weekly-report-subtitle">Click to view weekly timeline and status</div>
@@ -1152,7 +1152,6 @@
                                 <a class="week-status report-ready" onclick="viewReport(3)" title="View Week 3 Report">
                                     <i class="fas fa-file-alt"></i> Report Ready
                                 </a>
-                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
@@ -1170,12 +1169,15 @@
                             <div class="timeline-header">
                                 <span class="timeline-week">Week 4</span>
                                 <span class="timeline-dates">Apr 6 - Apr 12, 2026</span>
-                                <span class="week-status pending">Pending</span>
+                                <a class="week-status report-ready" onclick="viewReport(4)" title="View Week 4 Report">
+                                    <i class="fas fa-file-alt"></i> Report Ready
+                                </a>
+                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
                                     <span class="timeline-label">Summary:</span>
-                                    <span class="timeline-text">[Weekly summary will appear here]</span>
+                                    <span class="timeline-text">Tracker reorganization, new milestone phases added</span>
                                 </div>
                             </div>
                         </div>
@@ -1627,7 +1629,7 @@
     <script>
         // Project Data
         const launchDate = new Date('2026-09-16'); // 6 months from March 16
-        const totalTasks = 24;
+        const totalTasks = 26;
         let completedTasks = 0;
 
         const phases = [
@@ -1660,10 +1662,13 @@
                     {
                         id: 3,
                         title: "JetNet API Integration",
-                        description: "Connect with Jason Lorraine for API access and set up authentication.",
+                        description: "Connect with Jason Lorraine for API access and set up authentication. Full aircraft data sync and parts catalog.",
                         subtasks: [
                             "\u2014 JetNet is ready to go. I\u2019ll activate the live API when I get the database up in Azure, until then I\u2019ll build in the practice environment in Swagger.",
-                            "\u2014 Practice API tokens secured \u2014 available upon request."
+                            "\u2014 Practice API tokens secured \u2014 available upon request.",
+                            "\u2014 Fully integrated with room to expand",
+                            "\u2014 Full aircraft data sync and parts catalog integration planned",
+                            "\u2014 Zero-friction access (no extra logins or per-manual fees)"
                         ],
                         completed: true,
                         feedback: []
@@ -1685,7 +1690,7 @@
                 ]
             },
             {
-                name: "Phase 2: Core Platform Development",
+                name: "Phase 2: Core Platform",
                 hasUpdates: true,
                 updateColor: 'amber',
                 tasks: [
@@ -1701,31 +1706,23 @@
                     },
                     {
                         id: 6,
-                        title: "Aircraft Manual Library",
+                        title: "Manual Library & Hybrid RAG System",
                         titleBadge: "IN PROGRESS",
                         titleBadgeColor: "amber",
-                        description: "Build system for uploading, organizing, and searching aircraft manuals.",
+                        description: "Upload, index, and AI-search aircraft manuals. Private per-account RAG with public FAA data overlay.",
                         subtasks: [
-                            "Create upload interface",
-                            "Implement PDF parsing",
-                            "Build search functionality",
-                            "Add version control"
+                            "Create upload interface for licensed manuals",
+                            "PDF parsing and chunking + embedding pipeline",
+                            "Per-account private document store",
+                            "Hybrid retrieval (private manuals + public FAA sources)",
+                            "Search functionality with version control",
+                            "In-app guidance: upload once, never hunt again"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 7,
-                        title: "JetNet Data Integration",
-                        description: "Connect to JetNet API for real-time aircraft data and parts information.",
-                        subtasks: [
-                            "\u2014 Fully integrated with room to expand"
-                        ],
-                        completed: true,
-                        feedback: []
-                    },
-                    {
-                        id: 8,
                         title: "AI Troubleshooting Engine",
                         description: "Implement vector search and LLM integration for AI-powered diagnostics.",
                         subtasks: [
@@ -1736,42 +1733,139 @@
                         ],
                         completed: true,
                         feedback: []
+                    },
+                    {
+                        id: 8,
+                        title: "Public FAA Data Ingestion",
+                        description: "All public FAA ADs, Advisory Circulars, and released SBs automatically ingested and kept current.",
+                        subtasks: [
+                            "FAA AD scraper / API integration",
+                            "Advisory Circular ingestion",
+                            "Released SB tracking",
+                            "Automatic update scheduler"
+                        ],
+                        completed: false,
+                        feedback: []
                     }
                 ]
             },
             {
-                name: "Phase 3: Voice & Interface",
+                name: "Phase 3: AI Intelligence Layer",
+                hasUpdates: false,
                 tasks: [
                     {
                         id: 9,
-                        title: "Voice Interface (STT/TTS)",
-                        description: "Implement speech-to-text and text-to-speech for hands-free operation.",
+                        title: "Root Cause + Why + Next Action Output",
+                        description: "AI outputs root cause, \u2018why\u2019 explanation, and exact next action in plain English on every discrepancy.",
                         subtasks: [
-                            "Integrate Whisper for STT",
-                            "Add Coqui TTS integration",
-                            "Create voice command parser",
-                            "Build audio processing pipeline"
+                            "Structured output pipeline (root cause / why / action)",
+                            "Plain-English formatting for non-technical users",
+                            "Integration with discrepancy detection flow"
                         ],
-                        completed: true,
+                        completed: false,
                         feedback: []
                     },
                     {
                         id: 10,
-                        title: "Web Dashboard UI",
-                        description: "Build responsive web interface with all core features.",
+                        title: "Real-Time Automated Cross-Referencing",
+                        description: "Cross-reference user-uploaded manuals, SBs, ADs, and OEM pubs in real time.",
                         subtasks: [
-                            "Create main dashboard",
-                            "Build aircraft list view",
-                            "Implement manual viewer",
-                            "Add search interface"
+                            "Cross-ref engine for user-uploaded manuals",
+                            "SB and AD matching pipeline",
+                            "OEM publication ingestion",
+                            "Conflict and overlap detection"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 11,
+                        title: "Risk Scoring & Proactive Alerts",
+                        description: "Risk scoring per aircraft/fleet with proactive alerts.",
+                        subtasks: [
+                            "Risk scoring algorithm per tail number",
+                            "Fleet-level aggregation dashboard",
+                            "Proactive alert notification system",
+                            "Threshold configuration per operator"
+                        ],
+                        completed: false,
+                        feedback: []
+                    },
+                    {
+                        id: 12,
+                        title: "Continuous Learning Loop",
+                        description: "Learn from every resolved case. Target 95%+ accuracy on real AOG scenarios.",
+                        subtasks: [
+                            "Feedback capture on resolved cases",
+                            "Model fine-tuning pipeline",
+                            "95%+ accuracy benchmark suite",
+                            "Real AOG scenario validation set"
+                        ],
+                        completed: false,
+                        feedback: []
+                    }
+                ]
+            },
+            {
+                name: "Phase 4: Parts Brokerage & Revenue",
+                hasUpdates: false,
+                tasks: [
+                    {
+                        id: 13,
+                        title: "Unified Parts Search & Brokerage",
+                        description: "Unified parts search across all major platforms + direct OEM connections. Full workflow: search, compare, RFQ, order, track.",
+                        subtasks: [
+                            "Multi-platform parts aggregator + OEM connections",
+                            "Price comparison and availability tracker",
+                            "RFQ generation, order placement, shipment tracking",
+                            "Transaction margin capture end-to-end",
+                            "Revenue reporting dashboard"
+                        ],
+                        completed: false,
+                        feedback: []
+                    }
+                ]
+            },
+            {
+                name: "Phase 5: Interface & Apps",
+                hasUpdates: false,
+                tasks: [
+                    {
+                        id: 14,
+                        title: "Web Dashboard & Priority View",
+                        description: "Responsive web dashboard that opens and immediately shows what needs attention. Aircraft list, manual viewer, search.",
+                        subtasks: [
+                            "Priority queue algorithm \u2014 what needs attention now",
+                            "At-a-glance status cards, aircraft list view",
+                            "Manual viewer and search interface",
+                            "Mobile-optimized responsive layout",
+                            "Real-time push notifications"
+                        ],
+                        completed: false,
+                        feedback: []
+                    },
+                    {
+                        id: 15,
+                        title: "Voice-First Ramp Interface",
+                        titleBadge: "BASE DONE",
+                        titleBadgeColor: "green",
+                        description: "STT/TTS base complete. Harden for hands-free ramp use in noisy environments.",
+                        subtasks: [
+                            "\u2014 Whisper STT + Kokoro TTS already integrated",
+                            "Noise-cancellation for ramp environments",
+                            "Hands-free command vocabulary for AOG scenarios",
+                            "Offline voice fallback",
+                            "Quick-reply voice confirmations"
+                        ],
+                        completed: false,
+                        feedback: []
+                    },
+                    {
+                        id: 16,
                         title: "3D Globe Visualization",
-                        description: "Implement Three.js globe showing fleet locations and status.",
+                        titleBadge: "BASE DONE",
+                        titleBadgeColor: "green",
+                        description: "Three.js globe showing fleet locations and status.",
                         subtasks: [
                             "Set up Three.js scene",
                             "Create aircraft markers",
@@ -1782,180 +1876,145 @@
                         feedback: []
                     },
                     {
-                        id: 12,
-                        title: "Parts Marketplace",
-                        description: "Build parts search and procurement interface.",
-                        subtasks: [
-                            "Create parts search UI",
-                            "Implement RFQ system",
-                            "Add cart functionality",
-                            "Build order tracking"
-                        ],
-                        completed: false,
-                        feedback: []
-                    }
-                ]
-            },
-            {
-                name: "Phase 4: Mobile & Desktop Apps",
-                tasks: [
-                    {
-                        id: 13,
-                        title: "iOS Application",
-                        description: "Build native iOS app for iPhone and iPad.",
-                        subtasks: [
-                            "Create Xcode project",
-                            "Implement UI components",
-                            "Add native integrations",
-                            "Set up App Store deployment"
-                        ],
-                        completed: false,
-                        feedback: []
-                    },
-                    {
-                        id: 14,
-                        title: "Android Application",
-                        description: "Build native Android app for phones and tablets.",
-                        subtasks: [
-                            "Create Android project",
-                            "Implement UI components",
-                            "Add native integrations",
-                            "Set up Play Store deployment"
-                        ],
-                        completed: false,
-                        feedback: []
-                    },
-                    {
-                        id: 15,
-                        title: "Desktop Applications",
-                        description: "Build Windows and Mac desktop applications.",
-                        subtasks: [
-                            "Set up Electron project",
-                            "Implement desktop features",
-                            "Create installers",
-                            "Add auto-update system"
-                        ],
-                        completed: false,
-                        feedback: []
-                    }
-                ]
-            },
-            {
-                name: "Phase 5: Testing & Launch",
-                tasks: [
-                    {
-                        id: 16,
-                        title: "Cross-Platform Testing",
-                        description: "Comprehensive testing across all supported platforms.",
-                        subtasks: [
-                            "Test iOS app",
-                            "Test Android app",
-                            "Test web app",
-                            "Test desktop apps"
-                        ],
-                        completed: false,
-                        feedback: []
-                    },
-                    {
                         id: 17,
-                        title: "Performance Optimization",
-                        description: "Optimize application performance and loading times.",
+                        title: "Mobile Apps (iOS + Android)",
+                        description: "Build native mobile apps for iPhone, iPad, and Android. Submit to App Store + Google Play.",
                         subtasks: [
-                            "Optimize bundle sizes",
-                            "Improve API response times",
-                            "Reduce database queries",
-                            "Add caching strategies"
+                            "iOS: Xcode project, UI components, native integrations",
+                            "Android: project setup, UI components, native integrations",
+                            "App Store + Google Play submission",
+                            "Push notifications and offline support"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 18,
-                        title: "Security Audit",
-                        description: "Conduct security review and fix any vulnerabilities.",
+                        title: "Desktop Applications",
+                        description: "Build Windows and Mac desktop apps with auto-update and store submission.",
                         subtasks: [
-                            "Code security review",
-                            "Penetration testing",
-                            "Fix vulnerabilities",
-                            "Implement security headers"
+                            "Electron/Tauri project setup",
+                            "Desktop features + installers + auto-update",
+                            "Microsoft Store + Mac App Store submission"
                         ],
                         completed: false,
                         feedback: []
-                    },
+                    }
+                ]
+            },
+            {
+                name: "Phase 6: Integrations & Ecosystem",
+                hasUpdates: false,
+                tasks: [
                     {
                         id: 19,
-                        title: "Beta Testing Program",
-                        description: "Run beta program with select users and gather feedback.",
+                        title: "MxCard.io + AOG CRM Integration",
+                        description: "Seamless connection to MxCard.io + Advanced AOG CRM with one-click escalation.",
                         subtasks: [
-                            "Recruit beta testers",
-                            "Deploy beta versions",
-                            "Collect feedback",
-                            "Iterate on improvements"
+                            "MxCard.io data sync + CRM case linking",
+                            "Shared customer context + bi-directional updates",
+                            "One-click escalation with pre-populated discrepancy report",
+                            "Notification to AOG response team + status tracking"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 20,
-                        title: "App Store Submissions",
-                        description: "Submit all applications to respective app stores.",
+                        title: "Open APIs & Azure Marketplace",
+                        description: "Open APIs for operator fleet systems. Azure backend live and listed in MS Marketplace for co-sell.",
                         subtasks: [
-                            "Submit iOS App Store",
-                            "Submit Google Play",
-                            "Submit Windows store",
-                            "Submit Mac App Store"
+                            "RESTful API documentation + webhook events",
+                            "SDK for common fleet system integrations",
+                            "Azure production deployment",
+                            "Microsoft Marketplace listing + co-sell config",
+                            "SLA and uptime monitoring"
                         ],
                         completed: false,
                         feedback: []
-                    },
+                    }
+                ]
+            },
+            {
+                name: "Phase 7: Testing & Security",
+                tasks: [
                     {
                         id: 21,
-                        title: "Launch Preparation",
-                        description: "Final preparations for public launch.",
+                        title: "Cross-Platform Testing & Performance",
+                        description: "Comprehensive testing across all platforms plus performance optimization.",
                         subtasks: [
-                            "Create launch materials",
-                            "Set up analytics",
-                            "Configure monitoring",
-                            "Prepare support systems"
+                            "Test iOS + Android apps",
+                            "Test web dashboard + desktop apps",
+                            "Performance optimization + caching strategies",
+                            "Bundle size + API response time optimization"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 22,
-                        title: "Public Launch",
-                        description: "Officially launch the platform to the public.",
+                        title: "Security Audit",
+                        description: "Conduct security review, penetration testing, and fix vulnerabilities.",
                         subtasks: [
-                            "Deploy to production",
-                            "Announce launch",
-                            "Monitor systems",
-                            "Address issues"
+                            "Code security review",
+                            "Penetration testing",
+                            "Fix vulnerabilities + implement security headers"
                         ],
                         completed: false,
                         feedback: []
-                    },
+                    }
+                ]
+            },
+            {
+                name: "Phase 8: Validation & Launch",
+                hasUpdates: false,
+                tasks: [
                     {
                         id: 23,
-                        title: "Documentation Package",
-                        description: "Create comprehensive technical and user documentation.",
+                        title: "Proof: Internal Wins & Benchmarks",
+                        description: "Document internal wins from real AOG cases. Clear before/after comparison vs. current tools.",
                         subtasks: [
-                            "API documentation",
-                            "User guides",
-                            "Deployment docs",
-                            "Maintenance guides"
+                            "Case study documentation with before/after metrics",
+                            "Time-to-resolution tracking + cost savings quantification",
+                            "Competitive tool benchmarking + ROI calculator",
+                            "Published comparison assets"
                         ],
                         completed: false,
                         feedback: []
                     },
                     {
                         id: 24,
-                        title: "Training & Handoff",
-                        description: "Train client team and complete project handoff.",
+                        title: "External Pilot & Beta Program",
+                        description: "External pilot with 1\u20132 operators, plus broader beta testing.",
                         subtasks: [
-                            "Create training materials",
-                            "Conduct training sessions",
-                            "Transfer knowledge",
-                            "Complete handoff"
+                            "Pilot operator selection and onboarding",
+                            "Beta tester recruitment + deploy beta versions",
+                            "Feedback collection and iteration",
+                            "Success criteria validation"
+                        ],
+                        completed: false,
+                        feedback: []
+                    },
+                    {
+                        id: 25,
+                        title: "Launch & Distribution",
+                        description: "Final prep, production deploy, and public launch.",
+                        subtasks: [
+                            "Launch materials + analytics + monitoring",
+                            "Deploy to production",
+                            "Announce launch and monitor systems"
+                        ],
+                        completed: false,
+                        feedback: []
+                    },
+                    {
+                        id: 26,
+                        title: "Documentation & Handoff",
+                        description: "Complete technical docs, user guides, and client training.",
+                        subtasks: [
+                            "API docs + deployment docs + user guides",
+                            "Training materials + sessions",
+                            "Knowledge transfer + project handoff"
                         ],
                         completed: false,
                         feedback: []
@@ -2121,8 +2180,8 @@
         }
 
         function toggleTask(phaseIndex, taskIndex) {
-            const task = document.querySelectorAll('.task')[phaseIndex * 100 + taskIndex];
-            task.classList.toggle('expanded');
+            const task = document.getElementById(`task-${phaseIndex}-${taskIndex}`);
+            if (task) task.classList.toggle('expanded');
         }
 
 
@@ -2174,7 +2233,7 @@ josh`);
             section.classList.toggle('expanded');
         }
 
-        // Report viewer — simple hardwired approach
+        // Report viewer â€” simple hardwired approach
         let reportAuthed = false;
         let pendingReportWeek = null;
 
