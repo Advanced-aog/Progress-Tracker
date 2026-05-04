@@ -216,7 +216,8 @@
                     if (weekFolder && !imgSrc.startsWith('http') && !imgSrc.startsWith('data:')) {
                         imgSrc = `${weekFolder}/${imgSrc}`;
                     }
-                    output.push(`<div style="margin: 1rem 0; text-align: center;"><img src="${imgSrc}" alt="${imgMatch[1]}" style="max-width: 100%; border-radius: 0.5rem; border: 1px solid #334155;"></div>`);
+                    const encodedSrc = imgSrc.split('/').map(s => encodeURIComponent(s)).join('/');
+                    output.push(`<div style="margin: 1rem 0; text-align: center;"><img src="${encodedSrc}" alt="${imgMatch[1]}" style="max-width: 100%; border-radius: 0.5rem; border: 1px solid #334155;"></div>`);
                     continue;
                 }
                 // Video references

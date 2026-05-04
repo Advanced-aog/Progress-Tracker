@@ -1025,7 +1025,7 @@
     <div class="container">
         <header>
             <div class="logo">MX<span>GENIUS</span></div>
-            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: April 11, 2026 · 2:23 PM EST</div>
+            <div style="font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; text-transform: uppercase; margin-top: 0.25rem;">Last Updated: May 4, 2026 · 2:47 AM EST</div>
             <div class="header-right">
                 <div class="countdown-container">
                     <div class="countdown-label">Launch Countdown</div>
@@ -1061,8 +1061,8 @@
         <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-green); border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
             <i class="fas fa-check-circle" style="color: var(--accent-green); font-size: 1.25rem;"></i>
             <div>
-                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 5 Report Ready</div>
-                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 5 report is available for review in the Weekly Reports section below.</div>
+                <div style="color: var(--accent-green); font-family: 'Rajdhani', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;">Week 7 Report Ready</div>
+                <div style="color: var(--text-secondary); font-size: 0.82rem;">Week 6 & 7 reports are available for review in the Weekly Reports section below.</div>
             </div>
         </div>
 
@@ -1192,7 +1192,6 @@
                                 <a class="week-status report-ready" onclick="viewReport(5)" title="View Week 5 Report">
                                     <i class="fas fa-file-alt"></i> Report Ready
                                 </a>
-                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
@@ -1210,12 +1209,14 @@
                             <div class="timeline-header">
                                 <span class="timeline-week">Week 6</span>
                                 <span class="timeline-dates">Apr 20 - Apr 26, 2026</span>
-                                <span class="week-status pending">Pending</span>
+                                <a class="week-status report-ready" onclick="viewReport(6)" title="View Week 6 Report">
+                                    <i class="fas fa-file-alt"></i> Report Ready
+                                </a>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
                                     <span class="timeline-label">Summary:</span>
-                                    <span class="timeline-text">[Weekly summary will appear here]</span>
+                                    <span class="timeline-text">Timeline catch-up & follow-up from prior week's overflow</span>
                                 </div>
                             </div>
                         </div>
@@ -1228,12 +1229,15 @@
                             <div class="timeline-header">
                                 <span class="timeline-week">Week 7</span>
                                 <span class="timeline-dates">Apr 27 - May 3, 2026</span>
-                                <span class="week-status pending">Pending</span>
+                                <a class="week-status report-ready" onclick="viewReport(7)" title="View Week 7 Report">
+                                    <i class="fas fa-file-alt"></i> Report Ready
+                                </a>
+                                <span class="task-new-badge" style="font-size: 0.6rem;">NEW</span>
                             </div>
                             <div class="timeline-body">
                                 <div class="timeline-row">
                                     <span class="timeline-label">Summary:</span>
-                                    <span class="timeline-text">[Weekly summary will appear here]</span>
+                                    <span class="timeline-text">VR collaboration tools, data pipeline monitoring, Apple Vision SDK, edge AI deployment</span>
                                 </div>
                             </div>
                         </div>
@@ -1680,7 +1684,8 @@
                             "Incremental ingestion architecture",
                             "Update scheduler and change detection"
                         ],
-                        completed: false,
+                        completed: true,
+                        completionNote: "System constantly running in the background to complete the data ingestion.",
                         feedback: []
                     }
                 ]
@@ -1830,7 +1835,8 @@
                             "Scenario engine (failures, AOG cases)",
                             "Physics / system behavior modeling"
                         ],
-                        completed: false,
+                        completed: true,
+                        completionNote: "Firm foundation — Apple Vision SDK, JetNet feed, 3 onboard and local models, a 3D viewer with animations. Call connection is the last box on the list to bring it all together.",
                         feedback: []
                     },
                     {
@@ -2000,6 +2006,7 @@
                     <div class="task-content">
                         <div class="task-details">
                             <div class="task-description">${task.description}</div>
+                            ${task.completionNote ? `<div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 0.5rem; padding: 0.75rem 1rem; margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--accent-green); margin-top: 0.15rem;"></i><div><span style="color: var(--accent-green); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Completed</span><div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.15rem;">${task.completionNote}</div></div></div>` : ''}
                             <div class="subtasks">
                                 ${task.subtasks.map(st => {
                                     const isNewItem = st.startsWith('\u2014');
