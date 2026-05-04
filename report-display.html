@@ -225,7 +225,8 @@
                     const filenameMatch = line.match(/\*\*Video:\*\*\s*(.+)/);
                     if (filenameMatch && weekFolder) {
                         const filename = filenameMatch[1].trim();
-                        const videoSrc = `${weekFolder}/${filename}`;
+                        const encodedPath = `${weekFolder}/${filename}`.split('/').map(s => encodeURIComponent(s)).join('/');
+                        const videoSrc = `https://media.githubusercontent.com/media/Advanced-aog/Progress-Tracker/main/${encodedPath}`;
                         output.push(`<div class="report-video"><video controls preload="metadata"><source src="${videoSrc}" type="video/mp4">Your browser does not support the video tag.</video></div>`);
                         continue;
                     }
