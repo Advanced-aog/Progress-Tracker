@@ -1,4 +1,5 @@
 # Weekly Progress Report — Week 12
+
 **Date Range:** Jun 1, 2026 — Jun 7, 2026
 **Project:** Advanced AOG · Hermetic Labs
 
